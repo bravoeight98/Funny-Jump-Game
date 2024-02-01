@@ -7,31 +7,32 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 5f;
     public float jumpForce = 10f;
-    private bool isGrounded;
-    private RaycastHit2D groundHit;
+    private BoxCollider2D groundCheckCollider;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        groundCheckCollider = GetComponent<BoxCollider2D>(); // Get the BoxCollider2D
     }
 
     void Update()
     {
-        // Movement
+        // Movement (unchanged)
         float horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
 
         // Jumping
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
 
-    void FixedUpdate()
+    // Function to check if grounded using the BoxCollider2D
+    private bool IsGrounded()
     {
-        // Ground check using Raycast
-        groundHit = Physics2D.Raycast(transform.position, Vector2.down, 0.4f, LayerMask.GetMask("Ground"));
-        isGrounded = groundHit.collider != null;
+        return Physics2D.OverlapBox(groundCheckCollider.bounds.center,
+                                   groundCheckCollider.bounds.size,
+                                   0f, LayerMask.GetMask("Ground"));
     }
 }
