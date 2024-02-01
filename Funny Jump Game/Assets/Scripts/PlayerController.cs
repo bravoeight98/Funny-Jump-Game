@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Check for ground
-        isGrounded = Physics2D.OverlapCircle(transform.position, 1.5f, 
-                                            LayerMask.GetMask("Ground"));
+        // Ground check using Raycast
+        groundHit = Physics2D.Raycast(transform.position, Vector2.down, 0.4f, LayerMask.GetMask("Ground"));
+        isGrounded = groundHit.collider != null;
     }
 }
