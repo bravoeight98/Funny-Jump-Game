@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 10f;
     private bool isGrounded;
+    private RaycastHit2D groundHit;
 
     void Start()
     {
