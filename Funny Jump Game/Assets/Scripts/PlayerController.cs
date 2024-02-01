@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         // Check for ground
-        isGrounded = Physics2D.OverlapCircle(transform.position, 0.4f, 
+        isGrounded = Physics2D.OverlapCircle(transform.position, 1.5f, 
                                             LayerMask.GetMask("Ground"));
     }
 }
