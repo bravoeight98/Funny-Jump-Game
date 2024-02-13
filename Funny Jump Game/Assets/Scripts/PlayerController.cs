@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public float speed = 5f;
+    //public float speed = 5f;
     public float jumpForce = 5f;
     private BoxCollider2D groundCheckCollider;
     private SpriteRenderer spriteRenderer;
@@ -22,11 +22,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Movement (unchanged)
-        float horizontal = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        //float horizontal = Input.GetAxis("Horizontal");
+        //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
 
         // Jumping
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Fire") && IsGrounded())
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             ChangeColors();
