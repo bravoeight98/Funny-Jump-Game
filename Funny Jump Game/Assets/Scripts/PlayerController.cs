@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
 
         // Jumping
-        if (Input.GetButtonDown("Fire") && IsGrounded())
+        if (Input.GetButtonDown("Fire1") && IsGrounded())
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             ChangeColors();
