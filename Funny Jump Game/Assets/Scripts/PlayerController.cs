@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float speed = 5f;
-    public float jumpForce = 10f;
+    public float jumpForce = 5f;
     private BoxCollider2D groundCheckCollider;
     private SpriteRenderer spriteRenderer;
     private Camera mainCamera;
